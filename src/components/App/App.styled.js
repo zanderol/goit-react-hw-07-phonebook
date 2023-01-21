@@ -18,6 +18,9 @@ const Container = styled.div`
   @media screen and (min-width: 1280px) {
     width: 1280px;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const ContainerList = styled.div`
   text-align: center;

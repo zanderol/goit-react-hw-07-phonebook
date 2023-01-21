@@ -12,6 +12,12 @@ const ListItem = styled.li`
   align-items: center;
   max-width: 320px;
   margin-bottom: 5px;
+
+  border: 1px solid transparent;
+  border-radius: 5px;
+  outline: none;
+  box-shadow: 0px 2px 5px rgb(100, 100, 100);
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -27,6 +33,7 @@ const DeleteButton = styled.button`
   height: 30px;
   background-color: ${({ theme }) => theme.colors.main};
   border: none;
+  border-radius: 4px;
   color: ${({ theme }) => theme.colors.font};
   cursor: pointer;
   transition: all 250ms;

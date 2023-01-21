@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import { addContact } from 'redux/contactsSlice';
-import { Form, LabelForm, LabelInput, ButtonSubmit } from './Form.styled';
+import { Form, LabelInput, ButtonSubmit } from './Form.styled';
 import { nanoid } from 'nanoid';
 
 export default function ContactsForm() {
@@ -56,8 +56,9 @@ export default function ContactsForm() {
   return (
     <>
       <Form onSubmit={SubmitForm}>
-        <LabelForm>Name</LabelForm>
+        {/* <LabelForm>Name</LabelForm> */}
         <LabelInput
+          placeholder="Name"
           value={name}
           type="text"
           name="name"
@@ -67,8 +68,9 @@ export default function ContactsForm() {
           required
         ></LabelInput>
 
-        <LabelForm>Number</LabelForm>
+        {/* <LabelForm>Number</LabelForm> */}
         <LabelInput
+          placeholder="Number"
           value={number}
           type="tel"
           name="number"
