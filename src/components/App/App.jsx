@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
 import ContactsForm from 'components/Form';
 import ThemeBtn from 'components/ThemeBtn';
-import ContactList from 'components/ListContact';
+import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 import {
   Container,
