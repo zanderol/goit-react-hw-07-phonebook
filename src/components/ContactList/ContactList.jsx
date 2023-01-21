@@ -3,6 +3,7 @@ import { List, ListItem, DeleteButton, ItemInfo } from './ContactList.styled';
 import { getContacts, getByFilter } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contactsSlice';
+
 import { AiTwotoneDelete } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 

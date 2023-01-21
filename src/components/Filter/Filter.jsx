@@ -1,11 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
-import {
-  LabelSearch,
-  InputSearch,
-  SearchContainer,
-} from './SearchInput.styled';
+import { LabelSearch, InputSearch, SearchContainer } from './Filter.styled';
 
 import { getByFilter } from 'redux/selectors';
 
