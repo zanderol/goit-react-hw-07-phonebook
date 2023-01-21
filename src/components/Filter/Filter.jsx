@@ -5,6 +5,7 @@ import {
   LabelSearch,
   InputSearch,
   SearchContainer,
+} from './SearchInput.styled';
 
 import { getByFilter } from 'redux/selectors';
 
