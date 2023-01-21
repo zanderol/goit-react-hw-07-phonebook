@@ -1,6 +1,10 @@
 import React from 'react';
+import { List, ListItem, DeleteButton, ItemInfo } from './ContactList.styled';
 import { getContacts, getByFilter } from 'redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/contactsSlice';
+import { AiTwotoneDelete } from 'react-icons/ai';
+import { IconContext } from 'react-icons';
 
 const ContactList = () => {
   const contacts = useSelector(getContacts);
@@ -24,8 +28,23 @@ const ContactList = () => {
 
   return (
     <List>
-      return (<ListItem key={id}></ListItem>
-      ); })}
+      {sortedContacts.length === 0
+        ? null
+        : sortedContacts.map(({ id, name, number }) => {
+            return (
+              <ListItem key={id}>
+                <ItemInfo>
+                  <span>{name}:</span>
+                  <span>{number}</span>
+                </ItemInfo>
+                <DeleteButton onClick={() => onDeleteItem(id)}>
+                  <IconContext.Provider value={{ size: '25px' }}>
+                    <AiTwotoneDelete />
+                  </IconContext.Provider>
+                </DeleteButton>
+              </ListItem>
+            );
+          })}
     </List>
   );
 };
