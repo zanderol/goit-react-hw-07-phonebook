@@ -54,6 +54,8 @@ const ButtonSubmit = styled.button`
 
   cursor: pointer;
 
+  color: ${({ theme }) => theme.colors.font};
+
   transition: all 0.3s;
   &:hover:not(:disabled) {
     cursor: pointer;
