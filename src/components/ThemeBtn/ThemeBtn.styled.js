@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Toggle = styled.label`
   position: relative;
-  display: inline-block;
+  /* display: inline-block; */
   width: 50px;
   height: 25px;
   margin: 0 0.25rem;
@@ -41,7 +41,9 @@ const Toggle = styled.label`
 `;
 const ThemeSwitch = styled.div`
   display: flex;
-  align-items: center;
+  padding-left: 500px;
+  margin-top: -46px;
+  /* align-items: ; */
 `;
 
 export { Toggle, ThemeSwitch };

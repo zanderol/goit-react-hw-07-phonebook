@@ -4,7 +4,7 @@ const SearchContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 400px;
+  /* max-width: 400px; */
   margin: 0;
   margin-bottom: 40px;
 

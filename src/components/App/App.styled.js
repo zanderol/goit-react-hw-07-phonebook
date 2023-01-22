@@ -37,7 +37,7 @@ const ContainerList = styled.div`
 
 const Heading = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 20px;
 `;
@@ -45,7 +45,8 @@ const Heading = styled.div`
 const FormTitle = styled.h1`
   font-size: 28px;
   text-align: center;
-  margin-bottom: 20px;
+  /* margin-right: 200px; */
+  /* margin-bottom: 20px; */
 `;
 
 const ListTitle = styled.h2`

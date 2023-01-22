@@ -38,8 +38,8 @@ const App = () => {
 
           <Heading>
             <FormTitle>Phonebook</FormTitle>
-            <ThemeBtn />
           </Heading>
+          <ThemeBtn />
           <ContactsForm />
           <ContainerList>
             <ListTitle>Contacts</ListTitle>
