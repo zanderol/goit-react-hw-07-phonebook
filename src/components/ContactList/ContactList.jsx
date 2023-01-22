@@ -1,16 +1,23 @@
 import React from 'react';
-import { List, ListItem, DeleteButton, ItemInfo } from './ContactList.styled';
-import { getContacts, getByFilter } from 'redux/selectors';
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import {
+  List,
+  ListItem,
+  DeleteButton,
+  ItemInfo,
+  CallTo,
+  MailTo,
+} from './ContactList.styled';
 
-import { AiTwotoneDelete } from 'react-icons/ai';
+import { selectContacts, selectByFilter, selectLoading } from 'redux/selectors';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redux/operations';
+import { AiTwotoneDelete, AiOutlinePhone, AiOutlineMail } from 'react-icons/ai';
 import { IconContext } from 'react-icons';
 
 const ContactList = () => {
-  const contacts = useSelector(getContacts);
-
-  const filter = useSelector(getByFilter);
+  const contacts = useSelector(selectContacts);
+  const filter = useSelector(selectByFilter);
+  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
   const onDeleteItem = id => {
@@ -31,18 +38,31 @@ const ContactList = () => {
     <List>
       {sortedContacts.length === 0
         ? null
-        : sortedContacts.map(({ id, name, number }) => {
+        : sortedContacts.map(({ id, name, number, email }, index) => {
             return (
               <ListItem key={id}>
                 <ItemInfo>
+                  <span>{index + 1}.</span>
                   <span>{name}:</span>
-                  <span>{number}</span>
+                  <Number>{number}</Number>
                 </ItemInfo>
-                <DeleteButton onClick={() => onDeleteItem(id)}>
-                  <IconContext.Provider value={{ size: '25px' }}>
+
+                <IconContext.Provider value={{ size: '25px' }}>
+                  <CallTo href={`tel:${number}`}>
+                    <AiOutlinePhone />
+                  </CallTo>
+                  {email ? (
+                    <MailTo href={`mailto:${email}`}>
+                      <AiOutlineMail />
+                    </MailTo>
+                  ) : null}
+                  <DeleteButton
+                    disabled={loading}
+                    onClick={() => onDeleteItem(id)}
+                  >
                     <AiTwotoneDelete />
-                  </IconContext.Provider>
-                </DeleteButton>
+                  </DeleteButton>
+                </IconContext.Provider>
               </ListItem>
             );
           })}
