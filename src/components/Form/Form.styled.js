@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Form = styled.form`
   width: 600px;
   height: 250px;
-  background-color: ${({ theme }) => theme.colors.main};
+  background-color: ${props => props.theme.main};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,8 +30,12 @@ const LabelInput = styled.input`
   outline: none;
   box-shadow: 0px 2px 5px rgb(100, 100, 100);
 
+  color: ${props => props.theme.text};
+  background-color: ${props => props.theme.input};
+
   @media screen and (min-width: 768px) {
     max-width: 60%;
+    font-size: 16px;
   }
   @media screen and (min-width: 1280px) {
     max-width: 50%;
