@@ -1,27 +1,22 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/operations';
 import { Form, LabelInput, ButtonSubmit } from './Form.styled';
-import { nanoid } from 'nanoid';
 
 export default function ContactsForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(getContacts);
+  const [email, setEmail] = useState('');
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
-
-  const onIdCreate = () => {
-    let id = nanoid(6);
-    return id;
-  };
 
   const SubmitForm = e => {
     e.preventDefault();
     let contact = {
-      id: onIdCreate(),
       name: name,
       number: number,
+      email: email,
     };
     const someCopyItem = contacts.some(
       elem => elem.name.toLowerCase() === name.toLowerCase()
@@ -39,18 +34,21 @@ export default function ContactsForm() {
       case 'name':
         setName(value);
         break;
+      case 'email':
+        setEmail(value);
+        break;
       case 'number':
         setNumber(value);
         break;
       default:
         return;
     }
-    onIdCreate();
   };
 
   const DefaultValue = () => {
     setName('');
     setNumber('');
+    setEmail('');
   };
 
   return (
@@ -78,6 +76,17 @@ export default function ContactsForm() {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
+        ></LabelInput>
+
+        {/* <LabelForm>Email</LabelForm> */}
+        <LabelInput
+          placeholder="Email"
+          value={email}
+          type="email"
+          name="email"
+          onChange={InputChange}
+          pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+          title="Email address must contain the '@' symbol For example dmytrolevchenko22@gmail.com"
         ></LabelInput>
 
         <ButtonSubmit type="submit" disabled={!name || !number}>
