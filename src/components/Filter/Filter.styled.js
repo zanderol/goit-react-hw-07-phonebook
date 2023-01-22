@@ -21,6 +21,9 @@ const InputSearch = styled.input`
   padding: 10px;
   min-width: 200px;
 
+  color: ${props => props.theme.text};
+  background-color: ${props => props.theme.input};
+
   border: 1px solid transparent;
   border-radius: 5px;
   outline: none;
