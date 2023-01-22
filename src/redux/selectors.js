@@ -1,7 +1,17 @@
-const getContacts = state => state.contacts.contacts;
+const selectContacts = state => state.contacts.items;
 
-const getByFilter = state => state.filter.filter;
+const selectLoading = state => state.contacts.isLoading;
 
-const getTheme = state => state.theme;
+const selectByFilter = state => state.filter.filter;
 
-export { getContacts, getByFilter, getTheme };
+const selectTheme = state => state.theme.darkTheme;
+
+const selectError = state => state.contacts.error;
+
+export {
+  selectContacts,
+  selectByFilter,
+  selectLoading,
+  selectError,
+  selectTheme,
+};
