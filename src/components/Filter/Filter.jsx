@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice';
 import { LabelSearch, InputSearch, SearchContainer } from './Filter.styled';
 
-import { getByFilter } from 'redux/selectors';
+import { selectByFilter } from 'redux/selectors';
 
 const Filter = () => {
-  const filter = useSelector(getByFilter);
+  const filter = useSelector(selectByFilter);
   const dispatch = useDispatch();
 
   const onChangeFilter = e => {
