@@ -1,39 +1,30 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTheme } from 'redux/selectors';
-import { setDarkTheme, setDefaultTheme } from 'redux/themeSlice';
-import { ModeButton, Wrapper } from './ThemeBtn.styled';
-import { HiOutlineLightBulb, HiOutlineMoon } from 'react-icons/hi';
+import { selectTheme } from 'redux/selectors';
+import { setTheme } from 'redux/themeSlice';
+import { Toggle, ThemeSwitch } from './ThemeBtn.styled';
+import { HiOutlineSun, HiOutlineMoon } from 'react-icons/hi';
 import { IconContext } from 'react-icons';
 
 const ThemeBtn = () => {
+  const thm = useSelector(selectTheme);
   const dispatch = useDispatch();
-  const theme = useSelector(getTheme);
-  const setDefault = () => {
-    dispatch(setDefaultTheme());
+  const choseTheme = () => {
+    dispatch(setTheme());
   };
-  const setDark = () => {
-    dispatch(setDarkTheme());
-  };
+
   return (
     <>
-      {!theme.darkTheme ? (
-        <ModeButton onClick={setDark}>
-          <Wrapper>
-            <IconContext.Provider value={{ size: '25px' }}>
-              <HiOutlineLightBulb />
-            </IconContext.Provider>
-          </Wrapper>
-        </ModeButton>
-      ) : (
-        <ModeButton onClick={setDefault}>
-          <Wrapper>
-            <IconContext.Provider value={{ size: '25px' }}>
-              <HiOutlineMoon />
-            </IconContext.Provider>
-          </Wrapper>
-        </ModeButton>
-      )}
+      <ThemeSwitch>
+        <IconContext.Provider value={{ size: '25px' }}>
+          <HiOutlineSun />
+          <Toggle>
+            <input type="checkbox" checked={thm} onChange={choseTheme} />
+            <span />
+          </Toggle>
+          <HiOutlineMoon />
+        </IconContext.Provider>
+      </ThemeSwitch>
     </>
   );
 };
