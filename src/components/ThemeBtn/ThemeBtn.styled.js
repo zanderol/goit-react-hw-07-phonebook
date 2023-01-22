@@ -1,27 +1,47 @@
 import styled from 'styled-components';
 
-const ModeButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  padding: 15px;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.main};
-  /* color: ${({ cl }) => cl}; */
-  color: ${({ theme }) => theme.colors.font};
-  border: none;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transition: 0.3s all;
-  &:hover {
-    box-shadow: 0 0 6px ${({ theme }) => theme.colors.font};
+const Toggle = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+  margin: 0 0.25rem;
+  & > input[type='checkbox'] {
+    display: none;
+    &:checked + span::before {
+      transform: translateX(25px);
+      background-color: ${props => props.theme.input};
+    }
+    &:checked + span {
+      background-color: ${props => props.theme.main}f;
+    }
+  }
+  & > span {
+    position: absolute;
+    cursor: pointer;
+    background-color: ${props => props.theme.main};
+    border-radius: 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: background-color 0.2s ease;
+    &::before {
+      position: absolute;
+      content: '';
+      left: 2px;
+      top: 2px;
+      width: 21px;
+      height: 21px;
+      background-color: ${props => props.theme.input};
+      border-radius: 50%;
+      transition: transform 0.3s ease;
+    }
   }
 `;
-const Wrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  left: 50%;
+const ThemeSwitch = styled.div`
+  display: flex;
+  align-items: center;
 `;
-export { ModeButton, Wrapper };
+
+export { Toggle, ThemeSwitch };
